@@ -1,10 +1,10 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+
 export default function Login() {
   const router = useRouter();
   const fecthToken = async () => {
-    console.log("Login");
     try {
       await fetch(`${process.env.NEXT_PUBLIC_BASE_URL}/api/setCookiesToken`);
       router.push("/");

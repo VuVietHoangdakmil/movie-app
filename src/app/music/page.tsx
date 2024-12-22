@@ -1,27 +1,10 @@
-"use client";
-import { useEffect, useState } from "react";
-export default function Music() {
-  const [state, setState] = useState<number>(0);
-  useEffect(() => {
-    console.log("holy");
-  }, []);
-  return (
-    <div>
-      <div>number :{state}</div>
-      <div
-        onClick={() => {
-          setState((state) => ++state);
-        }}
-      >
-        btn
-      </div>
-      <div>Hoang</div>
-      <iframe
-        src="https://open.spotify.com/embed/track/31VNCmwspR7nVJ6kruUuJt"
-        width="300"
-        height="80"
-        allow="encrypted-media"
-      ></iframe>
-    </div>
+import { fetchWithAuth } from "@/app/actions";
+
+export default async function Music() {
+  const data = await fetchWithAuth(
+    `${process.env.NEXT_PUBLIC_ARTISTS}?ids=5HZtdKfC4xU0wvhEyYDWiY,57g2v7gJZepcwsuwssIfZs,3diftVOq7aEIebXKkC34oR,5dfZ5uSmzR7VQK0udbAVpf`
   );
+
+  console.log(data);
+  return <div></div>;
 }

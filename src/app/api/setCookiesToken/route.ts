@@ -20,6 +20,7 @@ async function getAccessToken() {
     },
     body: body.toString(), // Gắn body vào request
   });
+
   const data = await response.json();
   return data as DataResponse;
 }
