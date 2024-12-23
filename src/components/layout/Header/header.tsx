@@ -1,7 +1,7 @@
 "use client";
-import { useRouter, useSearchParams, usePathname } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import Container from "@/components/reponsive_container";
-import { useCallback, useState } from "react";
+import { useCallback, useState, memo } from "react";
 import { path } from "@/routes";
 const Header: React.FC = () => {
   const router = useRouter();
@@ -19,13 +19,13 @@ const Header: React.FC = () => {
     [searchParams]
   );
   return (
-    <header className="bg-primary_blue w-full h-[100px] sticky top-0">
+    <header className=" bg-white   h-[70px]  sticky top-0 z-[9999]">
       <Container>
         <div className="flex items-center h-full justify-between">
-          <div className="text-3xl text-white">LOGO_MUSIC</div>
-          <div className=" border-none relative  h-[50px]">
+          <div className="text-3xl text-black">LOGO_MUSIC</div>
+          <div className=" border-none relative  h-[40px]">
             <input
-              className="bg-[#d0d7db] border-none rounded-[40px] outline-none pl-4 w-[400px] h-full"
+              className="bg-slate-100 border-none rounded-[40px] outline-none pl-4 w-[400px] h-full"
               placeholder="Tìm kiếm"
               onChange={(e) => {
                 setSearch(e.target.value);
@@ -48,4 +48,4 @@ const Header: React.FC = () => {
     </header>
   );
 };
-export default Header;
+export default memo(Header);

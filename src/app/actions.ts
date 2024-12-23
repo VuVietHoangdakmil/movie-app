@@ -1,14 +1,10 @@
 "use server";
 import { cookies } from "next/headers";
-async function setCookiesToken() {
-  const cookieStore = await cookies();
-  cookieStore.set("access_token", "vl");
-  // or
-}
+
 // authFetch.js
 const fetchWithAuth = async <T>(
   url: string,
-  options: any = {}
+  options: RequestInit = {}
 ): Promise<T & { error?: { status: number; message: string } }> => {
   const cookieStore = await cookies();
   const token = cookieStore.get("accessToken")?.value;
@@ -22,8 +18,9 @@ const fetchWithAuth = async <T>(
   };
 
   const response = await fetch(url, { ...options, headers });
+
   const data: T & { error?: { status: number; message: string } } =
     await response.json();
   return data;
 };
-export { fetchWithAuth, setCookiesToken };
+export { fetchWithAuth };
